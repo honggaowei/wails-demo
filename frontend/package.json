@@ -11,12 +11,15 @@
   "dependencies": {
     "@quasar/extras": "^1.16.17",
     "quasar": "^2.18.1",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "^4.5.0",
+    "vue-i18n": "^9.9.1"
   },
   "devDependencies": {
     "@babel/types": "^7.18.10",
     "@quasar/vite-plugin": "^1.9.0",
     "@vitejs/plugin-vue": "^3.0.3",
+    "sass": "^1.86.0",
     "sass-embedded": "^1.85.1",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",

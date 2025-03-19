@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent } from 'vue';
 import { useQuasar, QVueGlobals } from 'quasar';
 
 // Optional: Add a name for debugging purposes
