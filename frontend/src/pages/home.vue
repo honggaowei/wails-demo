@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md neumorphic-container">
+  <q-page class="neumorphic-container">
     <div class="text-h5 q-mb-md">{{ t('menu.home') }}</div>
     <div class="row q-col-gutter-md">
       <!-- 添加一些示例卡片 -->
@@ -16,29 +16,14 @@
 </template>
 
 <script lang="ts" setup>
+
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 </script>
 
-<style lang="scss" scoped>
-.neumorphic-container {
-  min-height: 100vh;
-}
+<style lang="scss">
 
-.neumorphic-card {
-  border-radius: 15px;
-  background: linear-gradient(145deg,
-              var(--neumorphic-gradient-light) 0%,
-              var(--neumorphic-gradient-dark) 100%);
-  box-shadow: 5px 5px 10px var(--neumorphic-dark),
-              -5px -5px 10px var(--neumorphic-light);
-  transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 7px 7px 15px var(--neumorphic-dark),
-                -7px -7px 15px var(--neumorphic-light);
-  }
-}
+
 </style>

@@ -1,0 +1,119 @@
+$themes: (
+    // 晨风
+    morning-light: (base: #e0e5ec,
+        text: #2c3e50,
+        gradientLight: #e8edf4,
+        gradientDark: #d8dde4,
+        shadowLight: rgba(255, 255, 255, 0.7),
+        shadowDark: rgba(163, 177, 198, 0.7)),
+    //暖沙
+    warm-sand: (base: #e8e3d9,
+        text: #463f35,
+        gradientLight: #f0ebe1,
+        gradientDark: #e0dbd1,
+        shadowLight: rgba(255, 255, 255, 0.7),
+        shadowDark: rgba(179, 170, 157, 0.7)),
+    //薄荷清韵
+    cool-mint: (base: #e3efe8,
+        text: #2d4339,
+        gradientLight: #ebf7f0,
+        gradientDark: #dbe7e0,
+        shadowLight: rgba(255, 255, 255, 0.7),
+        shadowDark: rgba(157, 179, 167, 0.7)),
+    //薰衣草雾
+    lavender-mist: (base: #e7e4ed,
+        text: #393348,
+        gradientLight: #efecf5,
+        gradientDark: #dfdce5,
+        shadowLight: rgba(255, 255, 255, 0.7),
+        shadowDark: rgba(169, 162, 184, 0.7)),
+);
+
+
+//主题遍历生成样式
+@mixin theme-foreach {
+    @each $theme-name, $theme-map in $themes {
+        $theme-map: $theme-map !global; //变量通过!global提升为全局变量,供后续取值使用
+
+        [data-theme="#{$theme-name}"] & {
+            //插槽占位
+            @content;
+        }
+    }
+}
+
+//获取主题属性值
+@function theme-value($key) {
+    @return map-get($theme-map, $key);
+}
+
+// 基础背景色混入
+@mixin neu-background {
+  @include theme-foreach {
+    background-color: theme-value('base');
+  }
+}
+
+// 文字颜色混入
+@mixin neu-text {
+  @include theme-foreach {
+    color: theme-value('text');
+  }
+}
+
+// 凸起效果混入
+@mixin neu-convex {
+  @include theme-foreach {
+    background: linear-gradient(145deg, 
+      theme-value('gradientLight'),
+      theme-value('gradientDark'));
+    box-shadow: 8px 8px 16px theme-value('shadowDark'),
+               -8px -8px 16px theme-value('shadowLight');
+  }
+}
+
+// 凹陷效果混入
+@mixin neu-concave {
+  @include theme-foreach {
+    background: linear-gradient(145deg,
+      theme-value('gradientDark'),
+      theme-value('gradientLight'));
+    box-shadow: inset 8px 8px 16px theme-value('shadowDark'),
+                inset -8px -8px 16px theme-value('shadowLight');
+  }
+}
+
+// 按压效果混入
+@mixin neu-pressed {
+  @include theme-foreach {
+    background: theme-value('base');
+    box-shadow: inset 5px 5px 10px theme-value('shadowDark'),
+                inset -5px -5px 10px theme-value('shadowLight');
+  }
+}
+
+// 浅浮起效果混入
+@mixin neu-flat {
+  @include theme-foreach {
+    background: theme-value('base');
+    box-shadow: 4px 4px 8px theme-value('shadowDark'),
+               -4px -4px 8px theme-value('shadowLight');
+  }
+}
+
+// 新拟态按钮混入
+@mixin neu-button {
+  @include neu-flat;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #98b8d3;
+  
+  &:hover {
+    @include neu-convex;
+  }
+  
+  &:active {
+    @include neu-pressed;
+  }
+}
+

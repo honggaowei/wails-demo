@@ -21,7 +21,6 @@ import '@quasar/extras/line-awesome/line-awesome.css';
 
 // Import Quasar css
 import 'quasar/src/css/index.sass'
-import './styles/neumorphic.scss'
 
 // Assumes your root component is App.vue
 // and placed in the same folder as main.ts

@@ -9,5 +9,12 @@ export default defineConfig({
       template: { transformAssetUrls }
     }
   ),
-  quasar()]
+  quasar()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "/src/styles/theme.scss";`
+      },
+    }
+  }
 })

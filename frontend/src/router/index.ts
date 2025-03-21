@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
 import RedisManager from '../components/RedisManager.vue'
+import Encrypt from '../components/Encrypt.vue'
 import Home from '../pages/home.vue'
 
 const router = createRouter({
@@ -21,6 +22,10 @@ const router = createRouter({
     { 
       path: '/redis', 
       component: RedisManager 
+    },
+    { 
+      path: '/encrypt', 
+      component: Encrypt 
     },
   ],
 })
